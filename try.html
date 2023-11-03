@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider Example</title>
+    <style>
+        .slider-container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slider {
+            width: 100%;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .slider-image {
+            max-width: 100%;
+            height: auto;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <input type="range" min="1" max="3" value="1" class="slider" id="imageSlider">
+        <div class="image-container">
+            <img src="./image/car1.jpg" alt="Image 1" class="slider-image" id="image1">
+            <img src="./image/car2.jpg" alt="Image 2" class="slider-image" id="image2">
+            <img src="./image/car3.jpg" alt="Image 3" class="slider-image" id="image3">
+        </div>
+    </div>
+
+    <script>
+        const slider = document.getElementById("imageSlider");
+        const images = document.querySelectorAll(".slider-image");
+
+        slider.addEventListener("input", function() {
+            images.forEach(image => image.style.display = "none");
+            const selectedImage = document.getElementById(`image${slider.value}`);
+            selectedImage.style.display = "block";
+        });
+    </script>
+</body>
+</html>
